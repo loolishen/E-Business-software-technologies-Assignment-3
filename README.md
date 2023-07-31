@@ -1,1 +1,1 @@
-##FIT2095 <span style="color:red"> Assignments </span>Repository
+##FIT2095 <span style="color:red"> Assignment </span>Repository

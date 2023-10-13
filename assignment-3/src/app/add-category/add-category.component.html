@@ -1,1 +1,31 @@
-<p>add-category works!</p>
+<!-- event-form.component.html -->
+<div class="container m-3">
+  <div class="mt-4 p-5 bg-primary text-white rounded">
+    <h1>Welcome to FIT_2095</h1>
+    <p>Assignment 1</p>
+  </div>
+</div>
+<div class="container m-3">
+  <a type="button" class="btn btn-primary" routerLink="/info">How it works</a>
+</div>
+<div class="container m-3">
+  <a type="button" class="btn btn-primary" routerLink="/">Back</a>
+</div>
+<div class="container m-3">
+  <h1>Please enter the event:</h1>
+  <form (submit)="submitForm()">
+    <div class="mb-3">
+      <label for="eventName" class="form-label">Event Name</label>
+      <input type="text" class="form-control" id="eventName" name="eventName" [(ngModel)]="eventName">
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" class="form-control" id="description" name="description" [(ngModel)]="description">
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">Image</label>
+      <input type="text" class="form-control" placeholder="Enter static resource path" id="image" name="image" [(ngModel)]="image">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

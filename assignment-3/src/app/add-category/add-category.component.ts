@@ -1,5 +1,7 @@
 // event-form.component.ts
 import { Component} from '@angular/core';
+import {DatabaseServicesService} from "../services/database-services.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-category',
@@ -7,12 +9,21 @@ import { Component} from '@angular/core';
   styleUrls: ['./add-category.component.css']
 })
 export class AddCategoryComponent{
-  eventName: string = '';
-  description: string = '';
-  image: string = '';
-  submitForm(): void {
-    // Handle form submission logic here
-    console.log('Form submitted:', this.eventName, this.description, this.image);
-    // You can implement your HTTP request to send form data to the server
+  id:number = 0;
+  name: string = "";
+  description: string = "";
+  image: string = "";
+  creationDate: number = 0;
+  constructor(private dbService:DatabaseServicesService, private router:Router) {}
+  saveCat() {
+    let CategoryObj = {
+      name : this.name,
+      description : this.description,
+      image:this.image
+    };
+    this.dbService.addCategory(CategoryObj).subscribe({
+      next : (result) => {this.router.navigate(["list-category"])},
+      error:(error) => {console.log(error)}
+    })
   }
 }

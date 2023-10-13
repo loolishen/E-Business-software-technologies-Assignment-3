@@ -45,19 +45,31 @@ let recordsUpdatedCount = 0;
  * @returns {void}
  */
 Server.post('/input', async function (req, res) {
+  try {
     let anEventCat = new EventsCat({
-        id: IDGenerator(),
-        name: req.body.eventName,
-        description: req.body.description,
-        image: req.body.image,
-        creationDate: DateGenerator()
+      id: IDGenerator(),
+      name: req.body.eventName,
+      description: req.body.description,
+      image: req.body.image,
+      creationDate: DateGenerator()
     });
+
     await anEventCat.save();
+
     recordsCreatedCount++;
     categoriesCount++;
-    // Redirect to '/output'
-    res.redirect('/output');
+
+    // Send a success response with status 200
+    res.status(200).send('Event category saved successfully');
+  } catch (error) {
+    // Handle validation or other errors
+    console.error('Error in saving the event category:', error);
+
+    // Send a client error response with status 400
+    res.status(400).send('Bad Request: Invalid input data');
+  }
 });
+
 /**
  * Handle GET request to display a list of events.
  *

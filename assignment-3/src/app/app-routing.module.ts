@@ -6,7 +6,7 @@ import {ListCategoryComponent} from "./list-category/list-category.component";
 import {UpdateCategoryComponent} from "./update-category/update-category.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
-const routes: Routes = [
+export const routes: Routes = [
   {path: 'add-category', component:AddCategoryComponent},
   {path: 'delete-category', component:DeleteCategoryComponent},
   {path: 'list-category', component:ListCategoryComponent},

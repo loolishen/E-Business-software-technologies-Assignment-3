@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
@@ -9,6 +9,9 @@ import { DeleteCategoryComponent } from './delete-category/delete-category.compo
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { DisplayCategoryComponent } from './display-category/display-category.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {DatabaseServicesService} from "./services/database-services.service";
+import {HttpClientModule} from "@angular/common/http";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -23,9 +26,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes,{useHash:true})
   ],
-  providers: [],
+  providers: [DatabaseServicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

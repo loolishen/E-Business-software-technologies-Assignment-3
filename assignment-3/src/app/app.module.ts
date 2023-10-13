@@ -8,6 +8,7 @@ import { ListCategoryComponent } from './list-category/list-category.component';
 import { DeleteCategoryComponent } from './delete-category/delete-category.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { DisplayCategoryComponent } from './display-category/display-category.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DisplayCategoryComponent } from './display-category/display-category.co
     ListCategoryComponent,
     DeleteCategoryComponent,
     UpdateCategoryComponent,
-    DisplayCategoryComponent
+    DisplayCategoryComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

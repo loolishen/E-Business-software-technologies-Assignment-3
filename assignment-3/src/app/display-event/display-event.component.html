@@ -1,1 +1,11 @@
-<p>display-event works!</p>
+<h2>Event Details</h2>
+<div *ngIf="event">
+  <p><strong>Name:</strong> {{ event.name }}</p>
+  <p><strong>Description:</strong> {{ event.descriptionE }}</p>
+  <p><strong>Start Date/Time:</strong> {{ event.startDateTime }}</p>
+  <p><strong>Duration:</strong> {{ event.durationInMinutes }} minutes</p>
+  <p><strong>Active:</strong> {{ event.isActive ? 'Yes' : 'No' }}</p>
+  <p><strong>Image URL:</strong> {{ event.image }}</p>
+  <p><strong>Capacity:</strong> {{ event.capacity }}</p>
+  <p><strong>Tickets Available:</strong> {{ event.ticketsAvailable }}</p>
+</div>

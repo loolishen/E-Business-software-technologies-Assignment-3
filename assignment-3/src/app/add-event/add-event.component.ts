@@ -23,7 +23,7 @@ export class AddEventComponent {
       ticketsAvailable: 100
     };
 
-    this.http.post<any>('http://localhost:8080/33349800/api/v1/addEvent', requestBody)
+    this.http.post<any>('http://localhost:8080/lishen/event/add', requestBody)
       .subscribe(
         response => {
           if (response.acknowledged) {

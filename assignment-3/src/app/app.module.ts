@@ -12,6 +12,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import {DatabaseServicesService} from "./services/database-services.service";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
+import { AddEventComponent } from './add-event/add-event.component';
+import { DisplayEventComponent } from './display-event/display-event.component';
+import { DeleteEventComponent } from './delete-event/delete-event.component';
+import { UpdateEventComponent } from './update-event/update-event.component';
+import { ListEventComponent } from './list-event/list-event.component';
+import { TranslationComponent } from './translation/translation.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,13 @@ import {RouterModule} from "@angular/router";
     DeleteCategoryComponent,
     UpdateCategoryComponent,
     DisplayCategoryComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AddEventComponent,
+    DisplayEventComponent,
+    DeleteEventComponent,
+    UpdateEventComponent,
+    ListEventComponent,
+    TranslationComponent
   ],
   imports: [
     BrowserModule,

@@ -16,8 +16,9 @@ import { AddEventComponent } from './add-event/add-event.component';
 import { DisplayEventComponent } from './display-event/display-event.component';
 import { DeleteEventComponent } from './delete-event/delete-event.component';
 import { UpdateEventComponent } from './update-event/update-event.component';
-import { ListEventComponent } from './list-event/list-event.component';
+import { ListEventsComponent } from './list-event/list-event.component';
 import { TranslationComponent } from './translation/translation.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +33,9 @@ import { TranslationComponent } from './translation/translation.component';
     DisplayEventComponent,
     DeleteEventComponent,
     UpdateEventComponent,
-    ListEventComponent,
-    TranslationComponent
+    ListEventsComponent,
+    TranslationComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,

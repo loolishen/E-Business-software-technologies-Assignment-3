@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-add-event',
@@ -7,16 +8,15 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent {
-  constructor(private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) {}
 
   addEvent(): void {
     const eventId = this.generateEventID();
     const requestBody = {
-      // Populate your request body here based on your requirements
       name: 'Event Name',
       descriptionE: 'Event Description',
-      startDateTime: '2023-10-14T12:00:00', // Sample date and time
-      durationInMinutes: 120, // Sample duration
+      startDateTime: '2023-10-14T12:00:00',
+      durationInMinutes: 120,
       isActive: true,
       image: 'event-image-url',
       capacity: 100,
@@ -26,7 +26,10 @@ export class AddEventComponent {
     this.http.post<any>('http://localhost:8080/33349800/api/v1/addEvent', requestBody)
       .subscribe(
         response => {
-          console.log('Event added successfully with ID:', eventId);
+          if (response.acknowledged) {
+          this.router.navigate(['/list-events']);
+            console.log('Event added successfully');
+          } 
         },
         error => {
           console.error('Error adding the event:', error);

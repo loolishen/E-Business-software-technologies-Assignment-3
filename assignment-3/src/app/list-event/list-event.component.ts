@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-events',
-  templateUrl: './list-events.component.html',
-  styleUrls: ['./list-events.component.css']
+  templateUrl: './list-event.component.html',
+  styleUrls: ['./list-event.component.css']
 })
 export class ListEventsComponent implements OnInit {
   events: any[] = [];

@@ -16,7 +16,7 @@ export class ListEventsComponent implements OnInit {
   }
 
   getEvents(): void {
-    this.http.get<any[]>('http://localhost:8080/lishen/eventOngoing')
+    this.http.get<any[]>('http://localhost:8080/33349800/api/v1/listEvents')
       .subscribe(
         events => {
           this.events = events;

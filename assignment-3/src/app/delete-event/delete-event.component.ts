@@ -15,7 +15,7 @@ export class DeleteEventComponent {
   deleteEvent(): void {
     const requestBody = { eventId: this.eventId };
 
-    this.http.post<any>('http://localhost:8080/lishen/event/remove', requestBody)
+    this.http.post<any>('http://localhost:8080/33349800/api/v1/deleteEventById', requestBody)
       .subscribe(
         response => {
           if (response.acknowledged) {

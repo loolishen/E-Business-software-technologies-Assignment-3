@@ -1,1 +1,44 @@
-<p>update-event works!</p>
+<div class="container mt-5">
+    <h1 class="mb-4">Update Event</h1>
+    <form>
+      <div class="form-group">
+        <label for="eventId">Event ID:</label>
+        <input type="text" class="form-control" id="eventId" [(ngModel)]="eventId" name="eventId" required>
+      </div>
+      <div class="form-group">
+        <label for="name">Event Name:</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" [(ngModel)]="description" name="description"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="startDateTime">Start Date and Time:</label>
+        <input type="datetime-local" class="form-control" id="startDateTime" [(ngModel)]="startDateTime" name="startDateTime" required>
+      </div>
+      <div class="form-group">
+        <label for="durationInMinutes">Duration (minutes):</label>
+        <input type="number" class="form-control" id="durationInMinutes" [(ngModel)]="durationInMinutes" name="durationInMinutes" required>
+      </div>
+      <div class="form-group">
+        <label for="image">Image URL:</label>
+        <input type="text" class="form-control" id="image" [(ngModel)]="image" name="image">
+      </div>
+      <div class="form-group">
+        <label for="capacity">Capacity:</label>
+        <input type="number" class="form-control" id="capacity" [(ngModel)]="capacity" name="capacity">
+      </div>
+      <div class="form-group">
+        <label for="ticketsAvailable">Tickets Available:</label>
+        <input type="number" class="form-control" id="ticketsAvailable" [(ngModel)]="ticketsAvailable" name="ticketsAvailable">
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="isActive" [(ngModel)]="isActive" name="isActive">
+        <label class="form-check-label" for="isActive">Is Active</label>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="updateEvent()">Update Event</button>
+      <a [routerLink]="['/list-events']" class="btn btn-secondary ml-2">Back</a>
+    </form>
+  </div>
+  

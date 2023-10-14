@@ -1,1 +1,44 @@
-<p>add-event works!</p>
+<div class="container mt-5">
+    <h1 class="mb-4">New Event</h1>
+    <form (ngSubmit)="addEvent()" #eventForm="ngForm">
+      <div class="form-group">
+        <label for="name">Event Name:</label>
+        <input type="text" class="form-control" id="name" name="name" required [(ngModel)]="eventData.name" #name="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="startDateTime">Start Date and Time:</label>
+        <input type="datetime-local" class="form-control" id="startDateTime" name="startDateTime" required [(ngModel)]="eventData.startDateTime" #startDateTime="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="durationInMinutes">Duration (minutes):</label>
+        <input type="number" class="form-control" id="durationInMinutes" name="durationInMinutes" required [(ngModel)]="eventData.durationInMinutes" #durationInMinutes="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="categoryId">Category ID:</label>
+        <input type="text" class="form-control" id="categoryId" name="categoryId" required [(ngModel)]="eventData.categoryId" #categoryId="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="eventDescription">Description:</label>
+        <textarea class="form-control" id="eventDescription" name="eventDescription" [(ngModel)]="eventData.eventDescription" #eventDescription="ngModel"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="eventImage">Image URL (940x470):</label>
+        <input type="text" class="form-control" id="eventImage" name="eventImage" [(ngModel)]="eventData.eventImage" #eventImage="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="capacity">Capacity:</label>
+        <input type="number" class="form-control" id="capacity" name="capacity" [(ngModel)]="eventData.capacity" #capacity="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="ticketsAvailable">Tickets Available:</label>
+        <input type="number" class="form-control" id="ticketsAvailable" name="ticketsAvailable" [(ngModel)]="eventData.ticketsAvailable" #ticketsAvailable="ngModel">
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="isActive" name="isActive" [(ngModel)]="eventData.isActive" #isActive="ngModel">
+        <label class="form-check-label" for="isActive">Is Active</label>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!eventForm.form.valid">Add Event</button>
+      <a routerLink="/list-events" class="btn btn-secondary ml-2">Back</a>
+    </form>
+  </div>
+  

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-event',
@@ -8,51 +8,36 @@ import { Router } from "@angular/router";
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent {
+  eventData: any = {
+    name: '',
+    descriptionE: '',
+    startDateTime: '',
+    durationInMinutes: 0,
+    isActive: false,
+    image: '',
+    capacity: 0,
+    ticketsAvailable: 0
+  };
+  error: string = '';
+
   constructor(private router: Router, private http: HttpClient) {}
 
   addEvent(): void {
-    const eventId = this.generateEventID();
-    const requestBody = {
-      name: 'Event Name',
-      descriptionE: 'Event Description',
-      startDateTime: '2023-10-14T12:00:00',
-      durationInMinutes: 120,
-      isActive: true,
-      image: 'event-image-url',
-      capacity: 100,
-      ticketsAvailable: 100
-    };
-
-    this.http.post<any>('http://localhost:8080/lishen/event/add', requestBody)
+    // Make the HTTP POST request to add an event
+    this.http.post<any>('http://localhost:8080/33349800/api/v1/addEvent', this.eventData)
       .subscribe(
         response => {
-          if (response.acknowledged) {
-          this.router.navigate(['/list-events']);
+          if (response.eventId) {
+            this.router.navigate(['/list-events']);
             console.log('Event added successfully');
-          } 
+          } else {
+            this.error = 'Failed to add the event';
+          }
         },
         error => {
           console.error('Error adding the event:', error);
+          this.error = 'An error occurred. Please try again.';
         }
       );
-  }
-
-  private generateEventID(): string {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let result = 'E';
-
-    for (let i = 0; i < 2; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      result += characters[randomIndex];
-    }
-
-    result += '-';
-
-    for (let i = 0; i < 4; i++) {
-      const randomDigit = Math.floor(Math.random() * 10);
-      result += randomDigit;
-    }
-
-    return result;
   }
 }

@@ -7,6 +7,130 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const url = "mongodb://127.0.0.1:27017/";
 
+/////
+const app = express();
+const ANGULAR_APP_PATH = path.join(__dirname, 'dist', 'assignment-3');
+app.use(express.static(ANGULAR_APP_PATH));
+app.set('view engine', 'ejs');
+app.set('views', VIEWS_PATH);
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(ANGULAR_APP_PATH, 'index.html'));
+  });
+
+  function IDGeneratorE() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = 'E';
+    for (let i = 0; i < 2; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters[randomIndex];
+    }
+    result += '-';
+    for (let j = 0; j < 4; j++) {
+        const randomDigit = Math.floor(Math.random() * 10);
+        result += randomDigit;
+    }
+    return result;
+}
+// Display the form for adding an event
+app.get('/lishen/event/add', function (req, res) {
+    const fileName = VIEWS_PATH + "add.html"
+    res.sendFile(fileName)
+});
+
+app.post('/lishen/event/add', async function(req, res) {
+    const { name, startDateTime, durationInMinutes, categoryId, description, image, capacity, ticketsAvailable, isActive } = req.body;
+    // Generate a new ID
+    const id = IDGeneratorE();
+
+    // Create a new event object using the Mongoose model
+    const newEvent = new Events({ id, name, startDateTime, durationInMinutes, categoryId, description, image, capacity, ticketsAvailable, isActive });
+
+    try {
+        // Save the new event to the database
+        await newEvent.save();
+
+        recordsCreatedCount++;
+        eventsCount++;
+
+        res.redirect('/lishen/eventOngoing'); // Redirect to the eventOngoing page after adding the event
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+
+// Display all ongoing events
+app.get('/lishen/eventOngoing', async function (req, res) {
+    try {
+        fileName = VIEWS_PATH + "allEvents";
+        const events = await Events.find().populate('categoryList');
+        res.render(fileName, { events: events });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+})
+
+app.get('/lishen/event/sold-out', function (req, res) {
+    const fileName = "soldOutEvents";
+    const availableEvents = event.filter(event => event.ticketsAvailable < 1); // Filter events with capacity < 1
+    res.render(fileName, {events: availableEvents});
+})
+
+// Handle routes for event details and category details
+app.get('/lishen/event/details/:eventId', function (req, res) {
+    const eventId = req.params.eventId; // Get event ID from URL parameter
+    const selectedEvent = event.find(e => e.id === eventId);
+
+    if (!selectedEvent) {
+        res.status(404).send('Event not found');
+        return;
+    }
+
+    const fileName = "eventDetails";
+    res.render(fileName, {event: selectedEvent});
+});
+
+
+app.get('/lishen/category/:categoryId', function (req, res) {
+    const categoryId = req.params.categoryId;
+    const selectedCategory = database.find(cat => cat.id === categoryId); // Find the selected category
+
+    if (!selectedCategory) {
+        res.status(404).send('Category not found');
+        return;
+    }
+
+    // Calculate the end date/time by adding the duration to the start date/time
+    const startDateTime = new Date(selectedCategory.startDateTime);
+    const durationInMinutes = parseInt(selectedCategory.duration, 10);
+    const endDateTime = new Date(startDateTime.getTime() + durationInMinutes * 60000); // Convert minutes to milliseconds
+
+    const fileName = 'categoryDetails';
+    res.render(fileName, {
+        event: selectedCategory,
+        endDateTimes: endDateTime
+    });
+});
+
+// Remove an event from the event array
+app.get('/lishen/event/remove', (req, res) => {
+    const eventId = req.query.id; // Get event ID from query string
+    const eventIndex = event.findIndex(e => e.id === eventId); // Find the index of the event
+    if (eventIndex !== -1) {
+        recordsDeletedCount++;
+        eventsCount--;
+        event.splice(eventIndex, 1); // Remove the event from the array
+        res.redirect('/lishen/eventOngoing'); // Redirect to the "list all events" page
+    } else {
+        res.status(404).send('Event not found'); // Handle event not found
+    }
+});
+
+/////
 async function connect(url) {
     await mongoose.connect(url);
     return "Connected Successfully to mongoDB";

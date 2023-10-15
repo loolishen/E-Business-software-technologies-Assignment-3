@@ -22,13 +22,13 @@ export const routes: Routes = [
   {path: 'update-category', component:UpdateCategoryComponent},
   {path: '**', component:PageNotFoundComponent},
 
-  { path: 'add-event', component: AddEventComponent },
-  { path: 'list-event', component: ListEventsComponent },
-  { path: 'delete-event', component: DeleteEventComponent },
-  { path: 'display-event', component: DisplayEventComponent },
-  { path: 'update-event', component: UpdateEventComponent },
-  { path: 'translate', component: TranslationComponent }, // Route for translation component
-  { path: 'stats', component: StatisticsComponent } // Route for statistics component
+  { path: 'lishen/add-event', component: AddEventComponent },
+  { path: 'lishen/list-event', component: ListEventsComponent },
+  { path: 'lishen/delete-event', component: DeleteEventComponent },
+  { path: 'lishen/display-event', component: DisplayEventComponent },
+  { path: 'lishen/update-event', component: UpdateEventComponent },
+  { path: 'lishen/translate', component: TranslationComponent }, // Route for translation component
+  { path: 'lishen/stats', component: StatisticsComponent } // Route for statistics component
 ];
 
 @NgModule({

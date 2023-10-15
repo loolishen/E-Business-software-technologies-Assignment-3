@@ -24,7 +24,7 @@ export class AddEventComponent {
 
   addEvent(): void {
     // Make the HTTP POST request to add an event
-    this.http.post<any>('http://localhost:8080/33349800/api/v1/addEvent', this.eventData)
+    this.http.post<any>('http://localhost:8080/lishen/event/add', this.eventData)
       .subscribe(
         response => {
           if (response.eventId) {

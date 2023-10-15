@@ -1,13 +1,12 @@
 const express = require("express");
 const path = require("path");
 const VIEWS_PATH = path.join(__dirname, "/views/"); //Important
-const EventsCat = require("./models/EventCategorySchema");
-const Events = require("./models/student2-schema");
+const EventsCat = require("./backend/models/EventCategorySchema");
+const Events = require("./backend/models/student2-schema");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
-const eventCatRoutes = require("./routes/eventCategory-api");
 const url = "mongodb://127.0.0.1:27017/";
-const Operations = require("./models/operations")
+
 async function connect(url) {
     await mongoose.connect(url);
     return "Connected Successfully to mongoDB";
@@ -45,31 +44,21 @@ let recordsUpdatedCount = 0;
  * @returns {void}
  */
 Server.post('/input', async function (req, res) {
-  try {
     let anEventCat = new EventsCat({
-      id: IDGenerator(),
-      name: req.body.eventName,
-      description: req.body.description,
-      image: req.body.image,
-      creationDate: DateGenerator()
+        id: IDGenerator(),
+        name: req.body.eventName,
+        description: req.body.description,
+        image: req.body.image,
+        creationDate: DateGenerator()
     });
-
     await anEventCat.save();
 
     recordsCreatedCount++;
     categoriesCount++;
 
-    // Send a success response with status 200
-    res.status(200).send('Event category saved successfully');
-  } catch (error) {
-    // Handle validation or other errors
-    console.error('Error in saving the event category:', error);
-
-    // Send a client error response with status 400
-    res.status(400).send('Bad Request: Invalid input data');
-  }
+    // Redirect to '/output'
+    res.redirect('/output');
 });
-
 /**
  * Handle GET request to display a list of events.
  *
@@ -209,7 +198,7 @@ function DateGenerator(){
 
 function IDGeneratorE() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let result = 'C';
+    let result = 'E';
     for (let i = 0; i < 2; i++) {
         const randomIndex = Math.floor(Math.random() * characters.length);
         result += characters[randomIndex];

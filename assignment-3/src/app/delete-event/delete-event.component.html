@@ -1,35 +1,7 @@
 <div class="container mt-5">
-    <h1 class="mb-4">Event Details</h1>
-    <ul class="list-group">
-      <li class="list-group-item">
-        <strong>ID:</strong> {{ event.id }}
-      </li>
-      <li class="list-group-item">
-        <strong>Event Name:</strong> {{ event.eventName }}
-      </li>
-      <li class="list-group-item">
-        <strong>Start Date Time:</strong> {{ event.startDateTime | date: 'yyyy-MM-dd HH:mm:ss' }}
-      </li>
-      <li class="list-group-item">
-        <strong>Duration (minutes):</strong> {{ event.duration }}
-      </li>
-      <li class="list-group-item">
-        <strong>Event Description:</strong> {{ event.eventDescription }}
-      </li>
-      <li class="list-group-item">
-        <strong>Capacity:</strong> {{ event.capacity }}
-      </li>
-      <li class="list-group-item">
-        <strong>Tickets Available:</strong> {{ event.ticketsAvailable }}
-      </li>
-      <li class="list-group-item">
-        <strong>Ongoing:</strong> {{ event.isActive ? 'Yes' : 'No' }}
-      </li>
-      <li class="list-group-item">
-        <strong>Category ID:</strong> {{ event.categoryId }}
-      </li>
-    </ul>
-    <button (click)="deleteEvent(event.id)" class="btn btn-danger mt-3">Delete Event</button>
-    <a routerLink="33349800/api/v1/listEvents" class="btn btn-secondary mt-3">Back</a>
-  </div>
-  
+  <h1 class="mb-4">Event Details</h1>
+  <input type="text" [(ngModel)]="eventId" placeholder="Enter Event ID" class="form-control mb-3">
+  <button (click)="deleteEvent()" class="btn btn-danger">Delete Event</button>
+
+  <a routerLink="lishen/eventOngoing" class="btn btn-secondary mt-3">Back</a>
+</div>

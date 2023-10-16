@@ -1,14 +1,37 @@
-<a routerLink ="/add-category">Add Category</a>
-<br>
-<a routerLink ="/list-category">List Category</a>
-<br>
-<a routerLink ="/update-category">Update Category</a>
-<br>
-<a routerLink ="/delete-category">Delete Category</a>
+<!DOCTYPE html>
+<html lang="en">
 
-<a routerLink="/add-event">Add Event</a>
-<a routerLink="/list-event">List Events</a>
-<a routerLink="/translate">Translate Text</a>
-<a routerLink="/stats">Statistics</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Navigation</title>
+  <link rel="stylesheet" type="text/css" href="app.component.css">
+</head>
+
+<body>
+<header>
+  <h1>Welcome to the App Navigation</h1>
+</header>
+<div>
+  <p>Student 1 (Nikolas Sanjaya)</p>
+</div>
+<div class="link-container">
+  <a routerLink="/add-category">Add Category</a>
+  <a routerLink="/list-category">List Category</a>
+  <a routerLink="/update-category">Update Category</a>
+  <a routerLink="/delete-category">Delete Category</a>
+  <a routerLink="/text-to-speech">Text To Speech</a>
+  <a routerLink="/stats-g1">Event & EventCatCount</a>
+</div>
+
+<div class="link-container">
+  <a routerLink="/add-event">Add Event</a>
+  <a routerLink="/list-event">List Events</a>
+  <a routerLink="/translate">Translate Text</a>
+  <a routerLink="/stats">Statistics</a>
+</div>
 
 <router-outlet></router-outlet>
+</body>
+
+</html>

@@ -27,7 +27,6 @@
  */
 
 const mongoose = require("mongoose");
-const EventCat = require("../models/EventCategorySchema");
 
 /**
  * The Mongoose schema for events.
@@ -49,11 +48,11 @@ const eventSchema = mongoose.Schema({
         required: false,
     },
     startDateTime: {
-        type: Date, 
+        type: Date,
         required: true,
     },
     durationInMinutes: {
-        type: Number, 
+        type: Number,
         required: true,
     },
     isActive: {
@@ -82,8 +81,12 @@ const eventSchema = mongoose.Schema({
     },
     categoryList: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: EventCat
-    }]
+        ref: "EventCat"
+    }
+    ],
+    catID: {
+      type: [String],
+    },
 });
 
 /**

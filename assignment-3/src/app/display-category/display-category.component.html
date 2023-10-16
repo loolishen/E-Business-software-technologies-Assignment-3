@@ -1,1 +1,78 @@
-<p>display-category works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management App</title>
+  <link rel="stylesheet" type="text/css" href="display-category.component.css">
+</head>
+<body>
+<br>
+
+<div class="category-header">
+  <h1>Category Page</h1>
+</div>
+
+<ul class="category-list">
+  <li *ngIf="category">
+    <div>
+      <h2>{{ category.name | uppercase}}</h2>
+    </div>
+
+    <div class="category-details">
+      <div class="category-detail">
+        <strong>Category ID:</strong><br>{{ category.id | uppercase }}
+      </div><br>
+      <div class="category-detail">
+        <strong>Name:</strong><br>{{ category.name | uppercase}}
+      </div><br>
+      <div class="category-detail">
+        <strong>Description:</strong><br>{{ category.description }}
+      </div><br>
+      <div class="category-detail">
+        <strong>Image:</strong><br>{{ category.image }}
+      </div><br>
+      <div class="category-detail">
+        <strong>Created At:</strong><br>{{ category.creationDate}}
+      </div><br>
+    </div>
+  </li>
+</ul>
+
+<table class="styled-table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Event Name</th>
+    <th>Start Date Time</th>
+    <th>Duration in minutes</th>
+    <th>Event Description</th>
+    <th>Capacity</th>
+    <th>Tickets Available</th>
+    <th>Ongoing</th>
+    <th>Category ID</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let event of event">
+    <td>{{ event.id }}</td>
+    <td>{{ event.name }}</td>
+    <td>{{ event.startDateTime }}</td>
+    <td>{{ event.durationInMinutes }}</td>
+    <td>{{ event.description }}</td>
+    <td>{{ event.capacity }}</td>
+    <td>{{ event.ticketsAvailable }}</td>
+    <td>{{ event.isActive }}</td>
+    <td>{{ event.categoryId }}</td>
+    <td>
+      <a [routerLink]="'/display-event/'+event.id">
+        <button>View Details</button>
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

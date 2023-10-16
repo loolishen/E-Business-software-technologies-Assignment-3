@@ -1,14 +1,36 @@
-<!-- delete-category.component.html -->
-<div class="container m-3">
-  <a type="button" class="btn btn-primary" routerLink="/">Back</a>
-</div>
-
-<div class="container m-3">
-  <form (ngSubmit)="submitForm()">
-    <div class="form-group">
-      <label for="categoryId">Category ID:</label>
-      <input type="text" class="form-control" id="categoryId" name="categoryId" [(ngModel)]="categoryId" required>
-    </div>
-    <button type="submit" class="btn btn-danger">Delete Category</button>
-  </form>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styled Delete Event</title>
+  <link rel="stylesheet" href="delete-category.component.css">
+</head>
+<body>
+<h1>Delete Event</h1>
+<table class="styled-table">
+  <thead>
+  <tr>
+    <th>Category ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Image</th>
+    <th>Creation Date</th>
+    <th>Delete Category</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let record of records">
+    <td>{{ record.id }}</td>
+    <td>{{ record.name }}</td>
+    <td>{{ record.description }}</td>
+    <td>{{ record.image }}</td>
+    <td>{{ record.creationDate}}</td>
+    <td>
+      <button class="btn red-button" (click)="deleteCategory(record.id)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

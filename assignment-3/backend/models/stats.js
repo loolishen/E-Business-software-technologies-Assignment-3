@@ -8,20 +8,8 @@ const stats = mongoose.Schema({
     type: Number,
     default: 0,
   },
-  recordCreatedCount: {
-    type: Number,
-    default: 0,
-  },
-  recordDeletedCount: {
-    type: Number,
-    default: 0,
-  },
-  recordUpdatedCount: {
-    type: Number,
-    default: 0,
-  },
 });
-const stats = mongoose.model("stats", operationSchema);
+const statsEXP = mongoose.model("stats", stats);
 
-module.exports = stats;
+module.exports = statsEXP;
 

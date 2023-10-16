@@ -1,0 +1,76 @@
+<html>
+<head>
+    <link href="bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container m-3">
+    <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h1>Welcome to FIT_2095</h1>
+        <p>Assignment 1</p>
+    </div>
+</div>
+<div class="operations-box">
+  <div class="operations">
+    <div class="operations-number"><%= record && record.EventCreated ? record.EventCreated : '0' %></div>
+    <div class="operations-name">Event Created</div>
+  </div>
+  <div class="operations">
+    <div class="operations-number"><%= record && record.CategoryCreated ? record.CategoryCreated : '0' %></div>
+    <div class="operations-name">Category Created</div>
+  </div>
+  <div class="operations">
+    <div class="operations-number"><%= record && record.RecordCreated ? record.RecordCreated : '0' %></div>
+    <div class="operations-name">Record Created</div>
+  </div>
+  <div class="operations">
+    <div class="operations-number"><%= record && record.RecordDeleted ? record.RecordDeleted : '0' %></div>
+    <div class="operations-name">Record Deleted</div>
+  </div>
+  <div class="operations">
+    <div class="operations-number"><%= record && record.RecordUpdated ? record.RecordUpdated : '0' %></div>
+    <div class="operations-name">Record Updated</div>
+  </div>
+</div>
+
+<div class="container m-3">
+    <a type="button" class="btn btn-primary" href="/info">How it works</a>
+
+</div>
+<h1> Tasks Group 1 (Nikolas Sanjaya)</h1>
+<div class="container m-3">
+    <a type="button" class="btn btn-primary" href="/33349800/input">Add Category</a>
+</div>
+<div class="container m-3">
+    <a type="button" class="btn btn-primary" href="/33349800/output">List All Categories</a>
+</div>
+<div class="container m-3">
+    <a type="button" class="btn btn-primary" href="/33349800/search-category">Search Category by Keyword</a>
+</div>
+<div class="container m-3">
+    <a type= "button" class = "btn btn-primary" href="/33349800/event-details/default">View Event Details</a>
+</div>
+<div class="container m-3">
+    <a type="button" class="btn btn-primary" href="/33349800/delete-category">Delete Category</a>
+</div>
+<h1> Tasks Group 2 (Loo Li Shen)</h1>
+<div class="container m-3">
+    <a type="button" class="btn btn-primary" href='/lishen/event/add'>Add Event</a>
+</div>
+
+<div class="container m-3">
+    <a type="button" class="btn btn-primary" href='/lishen/eventOngoing'>All Events</a>
+</div>
+
+<div class="container m-3">
+    <a type="button" class="btn btn-primary" href='/lishen/event/sold-out'>List Sold Out Events</a>
+</div>
+
+<div class="container m-3">
+    <a type="button" class="btn btn-primary" href='/lishen/category/:categoryId'>Category Detail Page</a>
+</div>
+
+<div class="container m-3">
+    <a type="button" class="btn btn-primary" href='/lishen/event/remove'>Delete Event by ID</a>
+</div>
+</body>
+</html>

@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
@@ -12,13 +12,18 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import {DatabaseServicesService} from "./services/database-services.service";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
-import { AddEventComponent } from './add-event/add-event.component';
+/*import { AddEventComponent } from './add-event/add-event.component';*/
 import { DisplayEventComponent } from './display-event/display-event.component';
-import { DeleteEventComponent } from './delete-event/delete-event.component';
-import { UpdateEventComponent } from './update-event/update-event.component';
+/*import { DeleteEventComponent } from './delete-event/delete-event.component';
+import { UpdateEventComponent } from './update-event/update-event.component';*/
 import { ListEventsComponent } from './list-event/list-event.component';
 import { TranslationComponent } from './translation/translation.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { PipesPipe } from './pipes.pipe';
+import { TextToSpeechComponent } from './text-to-speech/text-to-speech.component';
+import { InvalidDataComponent } from './invalid-data/invalid-data.component';
+import { StatsG1Component } from './stats-g1/stats-g1.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -29,20 +34,25 @@ import { StatisticsComponent } from './statistics/statistics.component';
     UpdateCategoryComponent,
     DisplayCategoryComponent,
     PageNotFoundComponent,
-    AddEventComponent,
+   /* AddEventComponent,*/
     DisplayEventComponent,
-    DeleteEventComponent,
-    UpdateEventComponent,
+    /*DeleteEventComponent,
+    UpdateEventComponent,*/
     ListEventsComponent,
     TranslationComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    PipesPipe,
+    TextToSpeechComponent,
+    InvalidDataComponent,
+    StatsG1Component,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes,{useHash:true})
+    RouterModule.forRoot(routes,{useHash:true}),
+    ReactiveFormsModule,
   ],
   providers: [DatabaseServicesService],
   bootstrap: [AppComponent]

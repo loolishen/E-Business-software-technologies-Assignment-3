@@ -9,10 +9,10 @@ import {DatabaseServicesService} from "../services/database-services.service";
 export class ListCategoryComponent {
   records:any[] = [];
   constructor (private dbService : DatabaseServicesService){
-    this.getRecords();
+    this.getList();
   }
-  getRecords(){
-    this.dbService.getCategory().subscribe({
+  getList(){
+    this.dbService.getEventCat().subscribe({
       next:(data:any)=>{
         this.records=data;
     },error:(error) => {console.log(error)}

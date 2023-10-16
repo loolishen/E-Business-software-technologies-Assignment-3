@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management App</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+
+<style>
+  body {
+    background-image: url("/images/banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 100%  20%;
+  }
+</style>
+
+<br>
+
+<div class="event-header">
+  <h1>Event Page</h1>
+</div>
+
+<ul class="event-list">
+  <li *ngIf="event">
+    <div>
+      <h2>{{ event.name }}</h2>
+    </div>
+    <div class="event-details">
+      <div class="event-detail">
+        <strong>Event ID:</strong><br>{{ event.eventId }}
+      </div><br>
+      <div class="event-detail">
+        <strong>Name:</strong><br>{{ event.name }}
+      </div><br>
+      <div class="event-detail">
+        <strong>Description:</strong><br>{{ event.description }}
+      </div><br>
+      <div class="event-detail">
+        <strong>Start Date:</strong><br>{{ event.startDate }}
+      </div><br>
+      <div class="event-detail">
+        <strong>End Date:</strong><br>{{ event.endDate }}
+      </div><br>
+      <div class="event-detail">
+        <strong>Duration (Minutes):</strong><br>{{ event.durationInMinutes | eventDuration}}
+      </div><br>
+      <div class="event-detail">
+        <strong>Is Active:</strong><br>{{ event.isActive ? 'Yes' : 'No' }}
+      </div><br>
+      <div class="event-detail">
+        <strong>Capacity:</strong><br>{{ event.capacity }}
+      </div><br>
+      <div class="event-detail">
+        <strong>Tickets Available:</strong><br>{{ event.ticketsAvailable }}
+      </div><br>
+      <div class="event-detail">
+        <strong>Category ID:</strong><br>{{ event.categoryId }}
+      </div>
+    </div>
+  </li>
+</ul>
+</body>
+</html>

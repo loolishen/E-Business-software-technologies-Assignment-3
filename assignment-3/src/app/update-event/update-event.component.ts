@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+/*import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -16,7 +16,7 @@ export class UpdateEventComponent {
   image: string = '';
   capacity: number = 0;
   ticketsAvailable: number = 0;
-  
+
 
   constructor(private http: HttpClient) {}
 
@@ -47,4 +47,4 @@ export class UpdateEventComponent {
         }
       );
   }
-}
+}*/

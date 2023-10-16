@@ -1,0 +1,13 @@
+<div id="chatContainer">
+  <div class="chatform">
+    <div class="form-group">
+      <label for="message">Message</label>
+      <input type="text" class="form-control" id="message" placeholder="Your message" [(ngModel)]="messageText">
+    </div>
+    <button (click)="sendMessage()" type="submit" class="btn btn-primary">Send</button>
+  </div>
+  <audio controls>
+    <source src="../output.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+</div>

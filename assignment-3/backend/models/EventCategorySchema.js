@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const alphanumericPattern = /^[a-zA-Z0-9\s]*$/;
+const Event = require('./student2-schema'); // Adjust the path accordingly
 const eventsCatSchema = new mongoose.Schema({
     id: {
       type: String,
@@ -30,7 +31,7 @@ const eventsCatSchema = new mongoose.Schema({
     eventsList: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'cdscds', // Reference to the Event model
+            ref: 'Event', // Reference to the Event model
         },
     ],
   });

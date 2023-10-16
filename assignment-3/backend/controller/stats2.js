@@ -29,10 +29,10 @@ module.exports = {
                 startDateTime : req.body.startDateTime, durationInMinutes : req.body.durationInMinutes,
                 isActive : req.body.isActive, image : req.body.image, capacity : req.body.capacity,
                 ticketsAvailable : req.body.ticketsAvailable, categoryList : [categoryData._id]})
-  
+
         // Save the new event to the database
         await newEvent.save();
-  
+
         // Return the event ID in the response
         res.status(200).json({
             eventId: eventId, // Return the generated event ID
@@ -53,14 +53,14 @@ module.exports = {
                     model: EventCat, // Reference to the EventCat model
                 })
                 .exec();
-    
+
             res.status(200).json(events);
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: "Internal Server Error" });
         }
     },
-      
+
 
     deleteEventById: async function (req, res) {
         try {
@@ -84,12 +84,12 @@ module.exports = {
             res.status(500).json({ error: 'Internal Server Error' });
         }
     },
-    
+
 
     updateEventById: async function (req, res) {
         try {
             const { eventId, name, description, startDateTime, durationInMinutes, isActive, image, capacity, ticketsAvailable } = req.body;
-    
+
             // Find the event by eventId and update its fields
             const updatedEvent = await Student2Schema.findOneAndUpdate({ id: eventId }, {
                 name,
@@ -103,21 +103,21 @@ module.exports = {
             }, {
                 new: true
             });
-    
+
             if (!updatedEvent) {
                 res.status(404).json({ status: 'Event not found' });
                 return;
             }
-    
+
             res.status(200).json({ status: 'updated successfully' });
         } catch (error) {
             console.error(error);
             res.status(500).json({ status: 'Internal Server Error' });
         }
     },
-    
-    
-    
+
+
+
 
 }
 

@@ -20,8 +20,8 @@ export class DisplayEventComponent implements OnInit {
   }
 
   getEventDetails(eventId: string): void {
-    this.http.get<any>(`http://localhost:8080/33349800/api/v1/getEventById/${eventId}`)
-      .subscribe(
+    this.http.get<any>(`http://localhost:8080/lishen/event/details/${eventId}`)
+    .subscribe(
         (event) => {
           this.event = event;
         },

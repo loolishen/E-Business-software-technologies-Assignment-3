@@ -9,13 +9,33 @@ import { Router } from "@angular/router";
 })
 export class DeleteEventComponent {
   eventId: string = '';
+  event: any; // Add an event property to store event details
 
   constructor(private router: Router, private http: HttpClient) {}
 
-  deleteEvent(): void {
-    const requestBody = { eventId: this.eventId };
+  // Define the function to fetch event details based on the eventId
+  fetchEventDetails(eventId: string): void {
+    // Make an HTTP GET request to fetch event details based on the eventId
+    this.http.get<any>(`http://localhost:8080/lishen/event/details/${eventId}`)
+      .subscribe(
+        (event) => {
+          this.event = event;
+        },
+        (error) => {
+          console.error('Error fetching event details:', error);
+        }
+      );
+  }
 
-    this.http.post<any>('http://localhost:8080/33349800/api/v1/deleteEventById', requestBody)
+  deleteEvent(): void {
+    // Get the eventId from the input field
+    const eventId = this.eventId;
+
+    // Call the function to fetch event details
+    this.fetchEventDetails(eventId);
+
+    // Perform the event deletion after fetching details
+    this.http.post<any>('http://localhost:8080/lishen/event/remove', { eventId })
       .subscribe(
         response => {
           if (response.acknowledged) {

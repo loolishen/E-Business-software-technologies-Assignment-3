@@ -30,6 +30,7 @@ export const routes: Routes = [
   { path: 'text-to-speech', component: TextToSpeechComponent },
   { path: '**', component: PageNotFoundComponent }
 
+<<<<<<< HEAD
   /*{ path: 'add-event', component: AddEventComponent },
   { path: 'list-event', component: ListEventsComponent },
   { path: 'delete-event', component: DeleteEventComponent },
@@ -39,6 +40,15 @@ export const routes: Routes = [
   { path: 'stats', component: StatisticsComponent } // Route for statistics component
 
    */
+=======
+  { path: 'lishen/add-event', component: AddEventComponent },
+  { path: 'lishen/list-event', component: ListEventsComponent },
+  { path: 'lishen/delete-event', component: DeleteEventComponent },
+  { path: 'lishen/display-event', component: DisplayEventComponent },
+  { path: 'lishen/update-event', component: UpdateEventComponent },
+  { path: 'lishen/translate', component: TranslationComponent }, // Route for translation component
+  { path: 'lishen/stats', component: StatisticsComponent } // Route for statistics component
+>>>>>>> 294119960df036bc1986c920b7c1ff9656ae7b17
 ];
 
 @NgModule({
